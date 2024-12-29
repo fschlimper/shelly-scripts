@@ -62,10 +62,8 @@ Shelly.addEventHandler(function (e) {
       
       let d = dimmer.getDimmerData(e.component);
       
-      d.cbrgt = d.cbrgt + 1;
-      if (d.cbrgt >= d.brgt_steps.length) {
-        d.cbrgt = 0;
-      }
+      d.cbrgt = (d.cbrgt + 1) % d.brgt_steps.length;
+      
       if (DEBUG) {
         print("Setting brightness for " + d.name + " to " + d.brgt_steps[d.cbrgt] + "%.");
       }
